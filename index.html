@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utility.css" />
+    <link rel="stylesheet" href="css/additional.css">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="container flex">
+      <div class="left rounded">
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+        <div class="home grey-background rounded p1 m1">
+          <div class="logo flex">
+            <img class="invert" src="images/logo.svg" alt="logo" /> Spotify
+          </div>
+
+          <ul>
+            <li class="flex">
+              <img class="invert" src="images/home.svg" alt="home" />Home
+            </li>
+            <li class="flex">
+              <img class="invert" src="images/search.svg" alt="search" />Search
+            </li>
+          </ul>
+        </div>
+        <div class="library grey-background rounded p1 m1">
+          <div class="library-icon flex">
+            <img src="images/library.svg" alt="library" />Your Library
+          </div>
+
+          <div class="songs-container"></div>
+
+          <div class="footer-container">
+            
+              <div class="footer flex">
+                  <div><a href="https://www.spotify.com/in-en/legal/">Legal</a></div>
+                  <div><a href="https://www.spotify.com/in-en/safetyandprivacy/">Safety & Privacy Center</a></div>
+                  <div><a href="https://www.spotify.com/in-en/legal/privacy-policy/">Privacy Policy</a></div>
+                  <div><a href="https://www.spotify.com/in-en/legal/cookies-policy/">Cookies</a></div>
+                  <div><a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3">About Ads</a></div>
+                  <div><a href="https://www.spotify.com/in-en/accessibility">Accessibility</a></div>
+              </div>
+        
+              <a class="cookies-link" href="https://www.spotify.com/legal/cookies-policy/">Cookies</a>
+        
+              <button class="foot-lang-button"><img class="invert" src="images/language.svg" alt="language">English</button>
+          </div>
+        </div>
+      </div>
+      <div class="right rounded ">
+        <nav class="p1">
+          <span class="hamburger"><i class="fa-solid fa-bars"></i></span>
+          <div class="nav-arrows">
+            <i class="fa-solid fa-angle-left"></i>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+          <div class="nav-buttons">
+            <button class="signup">Sign up</button>
+            <button class="login">Log in</button>
+          </div>
+        </nav>
+
+        <main class="grey-background rounded p1">
+          <h2>Spotify Playlists</h2>
+          <div class="playlist-container">
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+            <div class="playlist">
+              <img src="https://i.scdn.co/image/ab67616d00001e0279f4a87c23143f0abb14c279" alt="">
+              <h4>Mismatched: Season 3</h4>
+              <p>Hits to boost your mood and fill you with...</p>
+            </div>
+          </div>
+
+          <div class="player">
+            <div class="player-buttons flex">
+              <i id="previous" class="fa-solid fa-backward-step"></i>
+              <i id="play" class="fa-regular fa-circle-play"></i>
+              <i id="pause" class="fa-solid fa-forward-step"></i>
+            </div>
+
+            <div class="song-name"></div>
+            <div class="song-duration">00:00 / 00:00</div>
+
+            <div class="seekbar">
+              <div class="seekbar-pointer"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

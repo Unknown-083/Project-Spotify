@@ -1,0 +1,27 @@
+.invert{
+    filter: invert(1);
+}
+
+.flex{
+    display: flex;
+}
+
+.grey-background{
+    background-color: #121212;
+}
+
+.p1{
+    padding: 1rem;
+}
+
+.m1{
+    margin: 0.3rem;
+}
+
+.rounded{
+    border-radius: 0.4rem;
+}
+
+.border1{
+    border: 1px solid #242424;
+}

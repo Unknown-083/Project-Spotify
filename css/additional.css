@@ -1,0 +1,22 @@
+
+/* Scrollbar styles for a dark-themed website */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px; /* for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #555; /* Dark gray for the thumb */
+    border-radius: 10px; /* Rounded corners */
+    border: 3px solid #333; /* Darker border */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #222; /* Dark track */
+    border-radius: 10px;
+}
+
+/* Optional: Hover effect */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #888; /* Light gray on hover */
+}
