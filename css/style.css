@@ -152,7 +152,6 @@ main{
     margin-top: 1rem;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
     max-height: 65vh;
@@ -237,6 +236,16 @@ main{
     gap: 2.5rem;
 }
 
+.player-right-cont{
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: absolute;
+    top: 30%;
+    right: 2rem;
+    font-size: 1rem;
+}
+
 .song-name{
     position: absolute;
     font-size: 1rem;
@@ -244,12 +253,12 @@ main{
     left: 2rem;
 }
 
-.song-duration{
+/* .song-duration{
     position: absolute;
     font-size: 1rem;
     top: 30%;
     right: 2rem;
-}
+} */
 
 .seekbar{
     width: 95%;
@@ -293,5 +302,49 @@ main{
 
     .nav-arrows{
         margin-left: 1.5rem;
+    }
+
+    .playlist-container{
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .player-right-cont{
+        /* font-size: 0.8rem; */
+        position:unset;
+    }
+
+    .song-name{
+        /* font-size: 0.8rem; */
+        position: unset;
+        /* width: 20vw; */
+        /* text-overflow: ellipsis; */
+        /* overflow: hidden; */
+        /* text-wrap: nowrap; */
+        /* height: 3vh; */
+    }
+
+    .player{
+        display: flex;
+        flex-direction: column;
+        max-height: 18vh;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        gap: 4px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+    .player-buttons{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 650px) {    
+    .playlist-container{
+        justify-content: center;
+        max-height: 60vh;
     }
 }

@@ -1,6 +1,9 @@
 let currentSong = new Audio();
+let songs;
 
 function convertToSecondsMinutes(time) {
+    if(isNaN(time) || time<0) return "00:00";
+    
     const minutes = Math.floor(time / 60); // Get whole minutes
     const seconds = Math.floor(time % 60); // Get remaining seconds
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
@@ -40,7 +43,7 @@ const playMusic = (track) => {
 }
 
 async function main() {
-    let songs = await getSongs();
+    songs = await getSongs();
     // console.log(songs);
     currentSong.src = songs[0];
     document.querySelector(".song-name").innerHTML = `${songs[0].split("Mp3/")[1].replaceAll("%20", " ").split(".")[0]}`;
@@ -112,6 +115,32 @@ async function main() {
     // Event listener for close
     document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-100%";
+    })
+
+    // Event listerner for previous
+    previous.addEventListener("click", () => {
+        let currentIndex = songs.indexOf(currentSong.src);
+        if(currentIndex>0){
+            playMusic(songs[currentIndex-1].split("Mp3/")[1].replaceAll("%20", " ").split(".")[0]);
+        }
+
+        else{
+            playMusic(songs[songs.length-1].split("Mp3/")[1].replaceAll("%20", " ").split(".")[0]);
+            console.log("works");
+        }
+    })
+    
+    // Event listerner for next
+    next.addEventListener("click", () => {
+        let currentIndex = songs.indexOf(currentSong.src);
+        if(currentIndex+1<songs.length){
+            playMusic(songs[currentIndex+1].split("Mp3/")[1].replaceAll("%20", " ").split(".")[0]);
+        }
+
+        else{
+            playMusic(songs[0].split("Mp3/")[1].replaceAll("%20", " ").split(".")[0]);
+        }
+        console.log("works")
     })
 }
 
