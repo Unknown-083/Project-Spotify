@@ -1,3 +1,7 @@
+:root{
+    --a : 0;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +12,7 @@ body{
     background-color: black;
     color: white;
     font-family: 'poppins', Arial, Helvetica, sans-serif;
+    overflow-y: hidden;
 }
 
 .left{
@@ -42,6 +47,13 @@ body{
 .library{
     position: relative;
     height: 75vh;
+}
+
+
+.name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
 }
 
 .library-icon{
@@ -151,23 +163,40 @@ main{
 .playlist-container{
     margin-top: 1rem;
     display: flex;
-    align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
-    max-height: 65vh;
+    height: 65vh;
     overflow-y: scroll;
+}
+
+.hoverPlaybutton{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 53%;
+    right: 10%;
+    transition: all ease-in-out 0.3s;
+    /* transform: translate(10px); */
+    opacity: var(--a);
 }
 
 .playlist{
     height: 270px;
     width: 200px;
     /* border: 1px solid white; */
-    background-color: #242424;  
+    background-color: #151515;  
     padding: 10px;
     border-radius: 5px;
+    position: relative;
+    transition: all ease-in-out 0.3s;
 }
 
-.playlist img{
+.playlist:hover{
+    --a: 1;
+    background-color: #242424;
+}
+
+.playlist-logo{
     width: 180px;
     object-fit: contain;
     border-radius: 15px;
@@ -228,6 +257,10 @@ main{
     padding: 0.5rem;
     position: relative;
     padding-bottom: 20px;
+}
+
+.player i{    
+    cursor: pointer;
 }
 
 .player-buttons{
@@ -332,7 +365,6 @@ main{
         align-items: center;
         justify-content: center;
         position: relative;
-        z-index: 2;
         gap: 4px;
         padding-top: 10px;
         padding-bottom: 15px;
@@ -342,9 +374,33 @@ main{
     }
 }
 
-@media screen and (max-width: 650px) {    
+@media screen and (max-width: 450px) {    
     .playlist-container{
         justify-content: center;
         max-height: 60vh;
+        /* padding: 10px; */
+    }
+
+    .playlist{
+        width: 85vw;
+        height: 400px;
+        margin: 0;
+        /* overflow-y: hidden; */
+    }
+
+    .playlist-logo{
+        width: 100%;
+        height: 75%;
+        object-fit: contain;        
+    }
+
+    .playlist h4{
+        font-size: 1.5rem;        
+        padding-left: 15px;
+    }
+
+    .playlist p{
+        font-size: 0.8rem;
+        padding-left: 15px;
     }
 }
