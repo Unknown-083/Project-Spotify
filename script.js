@@ -43,7 +43,7 @@ const playMusic = (track) => {
 
 async function main() {
     async function loadFolders() {
-        let a = await fetch("/MusicMp3/");
+        let a = await fetch("http://127.0.0.1:5500/MusicMp3/");
         let response = await a.text();
 
         let div = document.createElement('div');
