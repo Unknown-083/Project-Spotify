@@ -43,10 +43,11 @@ const playMusic = (track) => {
 
 async function main() {
     async function loadFolders() {
-        console.log(window.location.pathname);
+        console.log(document.location.pathname);
         let a = await fetch(`${document.location.origin}/MusicMp3`);
         let response = await a.text();
         
+        console.log(response);
         let div = document.createElement('div');
         div.innerHTML = response;
         console.log(div);
@@ -63,7 +64,7 @@ async function main() {
     
     folders = await loadFolders();
 
-    console.log(folders[0]);
+    console.log(folders);
     currFolder = folders[0].split("Mp3")[1];
 
     let playlistCont = document.querySelector(".playlist-container");
