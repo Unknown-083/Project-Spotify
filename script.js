@@ -41,29 +41,24 @@ const playMusic = (track) => {
     document.querySelector(".song-name").innerHTML = track;
 }
 
-async function main() {
-    async function loadFolders() {
-        console.log(document.location.pathname);
-        let a = await fetch(`/MusicMp3`);
-        let response = await a.text();
-        
-        console.log(response);
-        let div = document.createElement('div');
-        div.innerHTML = response;
-        console.log(div);
+async function loadFolders() {
+    console.log(document.location.pathname);
+    let a = await fetch(`/MusicMp3`);
+    let response = await a.text();
+    
+    console.log(response);
+    let div = document.createElement('div');
+    div.innerHTML = response;
+    console.log(div);
 
-        let elem = div.getElementsByClassName('icon');
+    let elem = div.getElementsByClassName('icon');
 
-        let folders = [];
-        for (let index = 1; index < elem.length; index++) {
-            const element = elem[index];
-            folders.push(element.href);
-        }
-        return folders;
+    let folders = [];
+    for (let index = 1; index < elem.length; index++) {
+        const element = elem[index];
+        folders.push(element.href);
     }
     
-    folders = await loadFolders();
-
     console.log(folders);
     currFolder = folders[0].split("Mp3")[1];
 
@@ -87,6 +82,10 @@ async function main() {
 
         playlistCont.append(playlist);
     }
+}
+
+async function main() {    
+    await loadFolders();
 
     songs = await getSongs(currFolder);
     currentSong.src = songs[0];
