@@ -46,7 +46,7 @@ async function loadFolders() {
     let a = await fetch(`/MusicMp3`);
     let response = await a.text();
     
-    console.log(response);
+    // console.log(response);
     let div = document.createElement('div');
     div.innerHTML = response;
     console.log(div);
@@ -54,7 +54,7 @@ async function loadFolders() {
     let elem = div.getElementsByClassName('icon');
 
     let folders = [];
-    for (let index = 1; index < elem.length; index++) {
+    for (let index = 1; index < elem.length-1; index++) {
         const element = elem[index];
         folders.push(element.href);
     }
