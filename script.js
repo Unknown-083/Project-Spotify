@@ -19,8 +19,8 @@ async function getSongs(folder) {
 
     let div = document.createElement('div');
     div.innerHTML = response;
-    
-    let elems = div.getElementsByClassName("icon-mp3");
+
+    let elems = div.querySelectorAll("a");
 
     let songs = [];
 
@@ -42,24 +42,20 @@ const playMusic = (track) => {
 }
 
 async function loadFolders() {
-    console.log(document.location.pathname);
     let a = await fetch(`/MusicMp3`);
     let response = await a.text();
     
-    // console.log(response);
     let div = document.createElement('div');
     div.innerHTML = response;
-    console.log(div);
 
-    let elem = div.getElementsByClassName('icon');
-
+    let elem = div.querySelectorAll("a");
     let folders = [];
-    for (let index = 1; index < elem.length-1; index++) {
+    for (let index = 1; index < elem.length; index++) {
         const element = elem[index];
         folders.push(element.href);
     }
     
-    console.log(folders);
+    
     currFolder = folders[0].split("Mp3")[1];
 
     let playlistCont = document.querySelector(".playlist-container");
@@ -88,8 +84,10 @@ async function main() {
     await loadFolders();
 
     songs = await getSongs(currFolder);
+
     currentSong.src = songs[0];
-    document.querySelector(".song-name").innerHTML = `${songs[0].split(currFolder+'/')[1].replaceAll("%20", " ").split(".")[0]}`;
+    
+    document.querySelector(".song-name").innerHTML = `${songs[0].split(currFolder)[1].replaceAll("%20", " ").split(".")[0]}`;
     
     let songCont = document.querySelector(".songs-container");
 
@@ -100,7 +98,7 @@ async function main() {
         songCard.innerHTML = `<div class="song-card flex border1">
               <i class="fa-solid fa-music"></i>
               <div class="song-info">
-                <div class="name">${song.split(currFolder+'/')[1].replaceAll("%20", " ").split(".")[0]}</div>
+                <div class="name">${song.split(currFolder)[1].replaceAll("%20", " ").split(".")[0]}</div>
                 <div class="artist">Kunal</div>
               </div>
               <p>Play Now</p>
@@ -113,7 +111,6 @@ async function main() {
     // Event Listener for each song to play
     Array.from(document.querySelector(".songs-container").childNodes).forEach(e => {
         e.addEventListener("click", element => {
-            console.log(e.querySelector('.song-info').querySelector(".name").innerText);
             playMusic(e.querySelector('.song-info').querySelector(".name").innerText);
         })
     });
@@ -132,14 +129,13 @@ async function main() {
 
     // Change duration for audio
     currentSong.addEventListener("timeupdate", () => {
-        // console.log(`${convertToSecondsMinutes(currentSong.currentTime)}/${convertToSecondsMinutes(currentSong.duration)}`);
+        
         document.querySelector(".song-duration").innerHTML = `${convertToSecondsMinutes(currentSong.currentTime)}/${convertToSecondsMinutes(currentSong.duration)}`;
         document.querySelector(".seekbar-pointer").style.left = (currentSong.currentTime/currentSong.duration)*100 + "%";
     })
 
     // Seekbar-pointer motion
     document.querySelector(".seekbar").addEventListener("click", e => {
-        // console.log(e.offsetX, e.target.getBoundingClientRect().width);
         let location = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
         document.querySelector(".seekbar-pointer").style.left = location + "%";
         currentSong.currentTime = ((currentSong.duration)*location)/100;
@@ -168,7 +164,6 @@ async function main() {
 
         else{
             playMusic(songs[songs.length-1].split(currFolder+'/')[1].replaceAll("%20", " ").split(".")[0]);
-            // console.log("works");
         }
     })
     
@@ -182,12 +177,10 @@ async function main() {
         else{
             playMusic(songs[0].split(currFolder+'/')[1].replaceAll("%20", " ").split(".")[0]);
         }
-        // console.log("works")
     })
 
     // Event listener for volume
     volumeRange.addEventListener("change", (e) => {
-        // console.log(e.target.value);
         currentSong.volume = e.target.value/100;
 
         if(currentSong.volume>0){
@@ -211,15 +204,12 @@ async function main() {
             currentSong.volume = 0.5;
             volumeRange.value = 50; 
         }
-        console.log(e,'click')
     })
 
     // Load songs of Playlist
     
     Array.from(document.querySelectorAll(".playlist")).forEach((e) => {
         e.addEventListener("click", async () => {
-            console.log(e);
-            console.log(e.querySelector(".title").innerText);
             let folderName = e.querySelector(".title").innerText;
             
             currFolder = folderName.replaceAll(" ", "%20");
@@ -229,7 +219,6 @@ async function main() {
             songs = await getSongs(e.querySelector(".title").innerText);
 
             currentSong.src = songs[0];
-            console.log(`${songs[0].split(currFolder+'/')[1]}`);
             document.querySelector(".song-name").innerHTML = `${songs[0].split(currFolder+'/')[1].replaceAll("%20", " ").split(".")[0]}`;
             let songCont = document.querySelector(".songs-container");
 
@@ -254,7 +243,6 @@ async function main() {
         
             Array.from(document.querySelector(".songs-container").childNodes).forEach(e => {
                 e.addEventListener("click", element => {
-                    console.log(e.querySelector('.song-info').querySelector(".name").innerText);
                     playMusic(e.querySelector('.song-info').querySelector(".name").innerText);
                 })
             });
