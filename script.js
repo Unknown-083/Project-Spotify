@@ -63,15 +63,19 @@ async function loadFolders() {
     for (const folder of folders) {
         let playlist = document.createElement('div');
 
+        // console.log(folder+'info.json')
+
         let info = await fetch(`${folder}/info.json`);
+        console.log(info)
         let response = await info.json();
+        console.log(response)
 
         let playlistLogo = await fetch(`${folder}/cover.webp`);
         let cover = playlistLogo.url;
 
         playlist.innerHTML = `<div class="playlist">
               <img class="playlist-logo" src="${cover}" alt="cover">
-              <img class="hoverPlaybutton" src="images/playlistPlaybutton.svg" alt="">
+              <img class="hoverPlaybutton" src="/images/playlistPlaybutton.svg" alt="">
               <h4 class="title">${response.title}</h4>
               <p class="description">${response.description}</p>
             </div>`;
